@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+	<script type="text/javascript" src="goldrush.js"></script>
+</head>
+<body ng-controller="mapController">
+	<div  class="map-container"  id="map">
+		<img ng-click="clickHandler($event)" src="topo-map.jpg" class="map-image">
+		<div ng-repeat="marker in markers" class="marker-container" ng-style="{'top': (marker.y-10)+'px', 'left': (marker.x-10)+'px'}">
+			<img class="marker-img" ng-mouseenter="marker.hovered = true" ng-mouseleave="marker.hovered=false" ng-src="http://vignette3.wikia.nocookie.net/terraria/images/9/95/GoldCoin_Small.gif/revision/latest?cb=20150710110619" ng-show="marker.show" ng-click="marker.show = false">
+			<textarea ng-model="marker.note" ng-show="marker.submitShow"></textarea>
+			<button ng-click="marker.submitShow = false" ng-show="marker.submitShow">Save</button>
+			<p ng-bind="marker.note" ng-show="marker.hovered" ></p>
+		</div>
+	</div>
+</body>
+</html>
